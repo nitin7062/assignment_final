@@ -4,8 +4,4 @@ class PublicController < ApplicationController
       redirect_to users_path
     end
   end
-  def help
-  end
-  def about
-  end
 end
