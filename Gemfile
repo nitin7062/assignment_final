@@ -83,4 +83,5 @@ group :test do
 end
 group :production do
   #For database
+  gem "pg"
 end
