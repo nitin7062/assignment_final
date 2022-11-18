@@ -6,7 +6,7 @@
 #
 default: &default
   username: postgres
-  password: myPassword
+  password: 1234567890
   database: ongraph
   host: localhost
   reconnect: true
@@ -16,8 +16,8 @@ default: &default
 
 development:
   <<: *default
-  database: ongraph
-  password: myPassword
+  database: ongraph_dev
+  password: 1234567890
   adapter: postgresql
   encoding: unicode
   host: localhost
@@ -27,8 +27,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ongraph
-  password: myPassword
+  database: ongraph_test
+  password: 1234567890
   host: localhost
   adapter: postgresql
   encoding: unicode

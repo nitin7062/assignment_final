@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'invitations/create'
+  get 'invitations/destory'
+  get 'invitations/update'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

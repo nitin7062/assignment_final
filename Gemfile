@@ -19,7 +19,7 @@ gem 'mini_magick'
 gem 'bootstrap-sass', '3.4.1'
 gem 'activeadmin'
 gem 'pg'
-
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 
 # Use the Puma web server [https://github.com/puma/puma]

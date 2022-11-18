@@ -12,8 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.integer :pin_code
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.boolean :Mortgagor, :default => false
-      t.boolean :Mortgagee, :default => false
+      
 
 
       ## Recoverable
