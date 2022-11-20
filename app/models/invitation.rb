@@ -18,4 +18,5 @@ class Invitation < ApplicationRecord
     else
       Invitation.where(user_id: id1, friend_id: id2, confirmed: :true)[0].id
     end
-end
+  end
+  end
