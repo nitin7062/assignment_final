@@ -18,13 +18,12 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'bootstrap-sass', '3.4.1'
 gem 'activeadmin'
-gem 'pg'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-
+gem "Procfile"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
