@@ -1,20 +1,68 @@
 <div class ="row">
-  <aside class="col--md-4">
-    <section class ="user_info">
-      <h1>
-        <%=gravatar_for @user %>
-        <%= @user.first_name %><br>
-      </h1>
-      <body>
-      <%="Email-" %>
-      <%= @user.email %><br>
-      <%="Role-" %>
-      <%= @user.role %><br>
-      <%="Mobile_number-" %>
-      <%= @user.mobile_number %><br>
-      <%="Address-" %>
-      <%= @user.address %>
-      </body>
-    </section>
-  </aside>
+    <aside class="col--md-4">
+      <section class ="user_info">
+        <h1>
+          <%=gravatar_for @user %>
+          <%= @user.first_name %><br>
+        </h1>
+        <body>
+        <%="Email-" %>
+        <%= @user.email %><br>
+        <%="Role-" %>
+        <%= @user.role %><br>
+        <%="Mobile_number-" %>
+        <%= @user.mobile_number %><br>
+        <%="Address-" %>
+        <%= @user.address %>
+        </body>
+      </section>
+    </aside>
+      <% if @user %>
+        <h3>connections of <strong> <%= @user.first_name %> </strong> </h3>
+
+        <ol>
+          <% @user.friends.each do |friend| %>
+            <li>
+              <%= friend.first_name %>
+              <% if @user == current_user %>
+                <%= link_to 'Unconnect',
+                invitation_path(id: Invitation.find_invitation(@user.id, friend.id)),data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+    <%end %>
+
+      <h3> Pending_Request</h3>
+      <%current_user.pending(current_user).each do|friend| %>
+        <h5><%= friend.first_name %></h5>
+    <p class="card-link"> <%=link_to "Reject", invitation_path(current_user.unco(current_user, friend)) , class: "btn btn-primary",data: {"turbo-method": :delete}%></p>
+    <%end %>
 </div>
+  <%#if @user %>
+<!--  <h3><%#=@hi %></h3>-->
+    <%#end %>
+
+
+        <%# if @user == current_user %>
+<!--          <h3> Invitations</h3>-->
+          <%# if (frs =Invitation.where(friend_id: @user.id, confirmed:"false")).present? %>
+            <%# frs.each do |fr|%>
+              <%# a = fr.user_id %>
+<!--              <li><%#=User.find(a).first_name%> </li>-->
+            <%# end %>
+          <%# else %>
+<!--            You don't have any friend requests-->
+          <%# end %>
+
+<%# if @user == current_user %>
+<!--      <h3> Pending_Request</h3>-->
+      <%# if (frs =Invitation.joins("INNER JOIN users on users.id=invitations.friend_id").where(confirmed:false,user_id:@user.id).select("users.first_name"))%>
+        <%# frs.each do |fr|%>
+<!--        <h5><%#= fr.first_name %></h5>-->
+<!--        <p class="card-link"> <%#= button_to "Accept",accept_path, params: {id: @user.id,confirmed: true}, method: :patch,class: "btn btn-primary"%> </p>-->
+        <%# end %>
+      <%# else %>
+<!--        No_pending_requests-->
+      <%# end %>
+      <%#end %>

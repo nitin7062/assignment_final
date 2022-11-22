@@ -23,4 +23,14 @@ class User < ApplicationRecord
     invitations.create(friend_id: user.id)
   end
 
+  def pending(user)
+    @hii = Invitation.where(user_id: user.id, confirmed: false).pluck("friend_id")
+    User.where(id: @hii)
+  end
+
+  def unco(user, friend)
+    Invitation.find_by(user_id: user.id, friend_id: friend.id ,confirmed:false)
+  end
+
+
 end

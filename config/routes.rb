@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  get 'invitations/create'
-  get 'invitations/destory'
-  get 'invitations/update'
-  get 'invitations/index'
+  # get 'invitations/create'
+  # delete 'invitations/destory'
+  # get 'invitations/update'
+  # get 'invitations/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
   resources :users
-  # resources :invitations
+  resources :invitations
   # get '/user', to: 'users#index'
   patch "accept",to: "invitations#accept"
+  # get "pending", to: "invitations#pending"
+  # delete "reject", to: "invitations#destroy"
   root to: 'public#main'
   # get '/help', to: 'public#help'
   # get '/about', to: 'public#about'

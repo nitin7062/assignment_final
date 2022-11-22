@@ -1,0 +1,25 @@
+<% if !@pending.empty? %>
+    <% @pending.each do |p| %>
+      <%inv= p.id%>
+      <%if current_user.friend_with?(p.user)%>
+        <p>Friends</p>
+        <%=p.user.first_name%>
+        <br>
+      <%end%>
+      <div class="card-body">
+        <h5 class="card-title"> <%=p.user.first_name%> <%=p.user.last_name%></h5>
+        <p class="card-text">Email: <%=p.user.email%></p>
+      </div>
+      <div class="row">
+        <div class="card-body"style="display: flex;justify-content: space-evenly;">
+
+          <p class="card-link"> <%= button_to "Accept",accept_path, params: {id: p.id,confirmed: true}, method: :patch,class: "btn btn-primary"%> </p>
+          <p class="card-link"> <%=link_to "Reject", invitation_path(p.id) , class: "btn btn-primary",data: {"turbo-method": :delete}%></p>
+        </div>
+      </div>
+    <%end%>
+<%else%>
+
+  <p>No pending Request</p>
+<%end %>
+
