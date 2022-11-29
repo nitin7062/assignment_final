@@ -12,5 +12,11 @@
         %></td>
      <% end %>
     </tr>
+
+    <tr>
+      <% if signed_in? && current_user.friend_with?(user) && current_user != user %>
+        <td> <%= link_to 'message'%></td>
+        <%  end %>
+    </tr>
   <%end %>
 </ul>
