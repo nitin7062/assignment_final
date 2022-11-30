@@ -1,0 +1,8 @@
+<div>
+          <% @conversations.each do |conversation| %>
+              <% if conversation.sender_id == current_user.id %>
+                <% receiver = User.find(conversation.receiver_id) %>
+              <% end %>
+              <h3><%=  receiver.email%></h3>
+            <% end %>
+        </div>

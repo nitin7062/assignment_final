@@ -80,8 +80,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
 end
 group :production do
   #For database
-  gem "pg"
 end

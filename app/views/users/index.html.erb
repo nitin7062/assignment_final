@@ -15,7 +15,7 @@
 
     <tr>
       <% if signed_in? && current_user.friend_with?(user) && current_user != user %>
-        <td> <%= link_to 'message'%></td>
+        <td> <%= link_to 'message',conversations_path(sender_id:current_user, receiver_id:user), data:{turbo_method: "post"}%></td>
         <%  end %>
     </tr>
   <%end %>
