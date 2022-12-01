@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :invitations
+  resources :conversations do
+    resources :messages
+  end
   # get '/user', to: 'users#index'
   patch "accept",to: "invitations#accept"
   # get "pending", to: "invitations#pending"

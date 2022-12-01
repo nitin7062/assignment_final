@@ -1,5 +1,8 @@
+# frozen_string_literal: true
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
+  # for checking the role and make to visit to only on opposite role
   def index
     @users = current_user
     if @users.role =="Mortgagee"
@@ -9,22 +12,9 @@ class UsersController < ApplicationController
     end
   end
 
+  #for showing the particular user
   def show
     @user = User.find(params[:id])
   end
+end
 
-  # def destroy
-  #   invitation = Invitation.find(params[:id])
-  #   invitation.destroy
-  #   redirect_to request.referrer
-  # end
-  # def pending(user)
-  #   @hi= Invitation.joins("INNER JOIN users on users.id=invitations.friend_id").where(confirmed:false,user_id:user.id).select("users.first_name")
-  # end
-  # def pending(user)
-  #   User.select(:first_name).joins(:invitations).where(invitations:{user_id: user.id, confirmed: false})
-  # end
-  # def pending
-  #   @user == current_user
-  #   @abc = Invitation.where(confirmed:"false", user_id: @user.id)
-  end

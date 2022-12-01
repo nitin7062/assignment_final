@@ -3,14 +3,20 @@
     <li>
       <%= gravatar_for user, size: 50 %>
       <%=link_to user.first_name,user  %>
-
     </li>
+
     <tr>
-    <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
-        <td> <%= link_to 'connect',
-                         invitations_path(ids: {id1: current_user.id, id2: user.id}),data: { turbo_method: "post"}
-        %></td>
-     <% end %>
+        <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
+            <td> <%= link_to 'connect',
+                             invitations_path(ids: {id1: current_user.id, id2: user.id}),data: { turbo_method: "post"}
+            %></td>
+        <% end %>
+    </tr>
+
+    <tr>
+      <% if signed_in? && current_user.friend_with?(user) && current_user != user %>
+        <td> <%= link_to 'message',conversations_path(sender_id:current_user, receiver_id:user), data:{turbo_method: "post"}%></td>
+      <%  end %>
     </tr>
   <%end %>
 </ul>

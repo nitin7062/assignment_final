@@ -58,7 +58,33 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  # local server is host if you working non localhost
+  host = 'localhost:3000'
+  # Use this if developing
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: host }
+
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    user_name: 'nitinkool22@gmail.com',
+    password: 'xqxlkafvejiphszr',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  # Local server
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  config.action_mailer.perform_caching = false
+
 
 
   # Raises error for missing translations.

@@ -18,6 +18,7 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'bootstrap-sass', '3.4.1'
 gem 'activeadmin'
+gem 'pg'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 
@@ -79,8 +80,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
 end
 group :production do
   #For database
-  gem "pg"
 end
