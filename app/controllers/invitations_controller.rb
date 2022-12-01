@@ -9,12 +9,13 @@ class InvitationsController < ApplicationController
     @friends = Invitation.all.select{ |m| m.confirmed == true || (m.user_id == @user.id || m.friend_id == @user.id)}
   end
 
-  #for creating invitation
+  #for creating invitation and sending mail to the friend
   def create
     id1 = params[:ids][:id1]
     id2 = params[:ids][:id2]
     @invitation = Invitation.new(user_id: id1, friend_id: id2)
     @invitation.save
+    ConnectionMailer.with(user:User.find(id1), friend:User.find(id2)).connection_created.deliver_later
     redirect_to users_path
   end
 
