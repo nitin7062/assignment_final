@@ -1,18 +1,18 @@
 <h1> Messanger</h1>
-<div>
-  <% @messages.each do|message| %>
-    <%= message.body %>
-    <%= message.created_at.try(:strftime, "%H:%M") %><br>
-    <%end %>
-</div>
+    <div>
+      <% @messages.each do|message| %>
+        <%= message.body %>
+       <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div>
+        <%end %>
+    </div>
 
-<div class="col-md-10 col-md-offset-1">
-  <%= form_for [@conversation, @message] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :body, class: "form-control" %>
+    <div class="col-md-10 col-md-offset-1">
+      <%= form_for [@conversation, @message] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Send Reply", class: "form-control btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-group">
-      <%= f.submit "Send Reply", class: "form-control btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
