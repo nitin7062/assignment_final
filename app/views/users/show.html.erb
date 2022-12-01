@@ -34,9 +34,11 @@
       </ol>
     <%end %>
 
-    <h3> Pending_Request</h3>
-    <%current_user.pending(current_user).each do|friend| %>
-      <h5><%= friend.first_name %></h5>
-      <p class="card-link"> <%=link_to "Reject", invitation_path(current_user.unco(current_user, friend)) , class: "btn btn-primary",data: {"turbo-method": :delete}%></p>
+    <% if current_user == @user %>
+      <h3> Pending_Request</h3>
+      <%current_user.pending(current_user).each do|friend| %>
+        <h5><%= friend.first_name %></h5>
+        <p class="card-link"> <%=link_to "Reject", invitation_path(current_user.unco(current_user, friend)) , class: "btn btn-primary",data: {"turbo-method": :delete}%></p>
+      <%end %>
     <%end %>
 </div>
