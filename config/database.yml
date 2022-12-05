@@ -27,7 +27,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: FARM
+  database: FARM_testing
   password: myPassword
   host: localhost
   adapter: postgresql
