@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # get "pending", to: "invitations#pending"
   # delete "reject", to: "invitations#destroy"
   root to: 'public#main'
+  get 'public/main'
   # get '/help', to: 'public#help'
   # get '/about', to: 'public#about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
