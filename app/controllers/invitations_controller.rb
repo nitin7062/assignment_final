@@ -28,8 +28,6 @@ class InvitationsController < ApplicationController
 
   #for destroying invitation
   def destroy
-    puts "destroy"
-    puts params
     invitation = Invitation.find(params[:id])
     invitation.destroy
     redirect_to request.referrer
