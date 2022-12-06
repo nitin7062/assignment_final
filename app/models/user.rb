@@ -2,7 +2,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
-
+  validates :first_name, :email,:role, presence: true
+  validates :email, presence:true, uniqueness:true
   has_many :invitations
   has_many :pending_invitations, ->{ where confirmed: false }, class_name: "Invitation", foreign_key: "friend_id"
   has_many :conversations
