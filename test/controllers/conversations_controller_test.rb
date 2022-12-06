@@ -1,10 +1,11 @@
 require "test_helper"
-
 class ConversationsControllerTest < ActionDispatch::IntegrationTest
+
   def setup
     @user = users(:michael)
     @conversation = conversations(:one)
   end
+
   test "should get index" do
     sign_in @user
     get conversations_path
