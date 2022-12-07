@@ -1,8 +1,8 @@
 <h1> Messanger</h1>
     <div>
       <% @messages.each do|message| %>
-        <%= message.body %>
-       <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div>
+       <div class="alert alert-primary" role="alert"><%= message.body %>
+         <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div></div>
       <%end %>
     </div>
 
