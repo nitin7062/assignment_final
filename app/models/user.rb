@@ -2,6 +2,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
+  scope :mortgagor, -> {where(role: "Mortgagor")}
+  scope :mortgagee, -> {where(role: "Mortgagee")}
   validates :first_name, :email,:role, presence: true
   validates :email, presence:true, uniqueness:true
   has_many :invitations

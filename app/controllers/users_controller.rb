@@ -4,12 +4,7 @@ class UsersController < ApplicationController
 
   # for checking the role and make to visit to only on opposite role
   def index
-    @users = current_user
-    if @users.role =="Mortgagee"
-      @mort_users= User.where(role:"Mortgagor")
-    else
-      @mort_users =User.where(role:"Mortgagee")
-    end
+    @mort_users = current_user.role == "Mortgagee" ? User.mortgagor : User.mortgagee
   end
 
   #for showing the particular user
@@ -17,4 +12,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
+
 
