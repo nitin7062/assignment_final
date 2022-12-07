@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :invitations
   has_many :pending_invitations, ->{ where confirmed: false }, class_name: "Invitation", foreign_key: "friend_id"
   has_many :conversations
+  has_many :messages
 
   #for checking the friends
   def friends
