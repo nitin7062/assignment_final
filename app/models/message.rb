@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Message < ActiveRecord::Base
   belongs_to :conversation
+  belongs_to :user
 
   validates_presence_of :body
 end

@@ -1,15 +1,22 @@
 <h1> Messanger</h1>
     <div>
       <% @messages.each do|message| %>
+        <% if message.body %>
+          <% user = User.find(message.user_id) %>
+          <%= user.first_name %>
        <div class="alert alert-primary" role="alert"><%= message.body %>
          <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div></div>
       <%end %>
+        <%end %>
     </div>
 
     <div class="col-md-10 col-md-offset-1">
       <%= form_for [@conversation, @message] do |f| %>
         <div class="form-group" data-controller="auto-grow-textarea">
           <%= f.text_area :body, class: "form-control", data: { action: 'input->auto-grow-textarea#resize', target: 'auto-grow-textarea.input'} %>
+        </div>
+        <div>
+          <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
         </div>
         <div class="form-group">
           <%= f.submit "Send Reply", class: "form-control btn btn-primary" %>
