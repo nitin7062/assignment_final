@@ -1,13 +1,9 @@
+<%= turbo_stream_from "messages" %>
 <h1><%=current_user.first_name %></h1>
-    <div>
+    <div id ="messages">
       <% @messages.each do|message| %>
-        <% if message.body %>
-          <% user = User.find(message.user_id) %>
-          <%= user.first_name %>
-       <div class="alert alert-primary" role="alert"><%= message.body %>
-         <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div></div>
+        <%= render message %>
       <%end %>
-        <%end %>
     </div>
 
     <div class="col-md-10 col-md-offset-1">
