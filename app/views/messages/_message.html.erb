@@ -1,6 +1,6 @@
 <% if message.body %>
   <% user = User.find(message.user_id) %>
-  <%= user.first_name %>
+  <strong><%= user.first_name %></strong>
   <div class="alert alert-primary" role="alert"><%= message.body %>
     <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div>
   </div>
