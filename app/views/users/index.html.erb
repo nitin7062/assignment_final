@@ -1,9 +1,9 @@
+<%= turbo_stream_from "users" %>
 <ul class="users">
+  <div id = "users">
   <% @mort_users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 50 %>
-      <%=link_to user.first_name,user  %>
-    </li>
+    <%= render user %>
+      </div>
 
     <tr>
         <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>

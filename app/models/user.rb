@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :pending_invitations, ->{ where confirmed: false }, class_name: "Invitation", foreign_key: "friend_id"
   has_many :conversations
   has_many :messages
-
+  after_create_commit { broadcast_append_to "users" }
   #for checking the friends
   def friends
     friends_sent_invitation = Invitation.where(user_id: id, confirmed: true).pluck(:friend_id)
