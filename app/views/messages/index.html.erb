@@ -1,5 +1,5 @@
 <%= turbo_stream_from "messages" %>
-<h1><%=current_user.first_name %></h1>
+<h1><%="Conversations" %></h1>
     <div id ="messages">
       <% @messages.each do|message| %>
         <%= render message %>
