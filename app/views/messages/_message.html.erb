@@ -2,6 +2,6 @@
   <% user = User.find(message.user_id) %>
   <strong><%= user.first_name %></strong>
   <div class="alert alert-primary" role="alert"><%= message.body %>
-    <div class = "header"><%= message.created_at.try(:strftime, "%H:%M") %></div>
+    <div class = "header"><%= message.created_at.in_time_zone("Asia/Kolkata").try(:strftime, "%H:%M") %></div>
   </div>
 <%end %>
